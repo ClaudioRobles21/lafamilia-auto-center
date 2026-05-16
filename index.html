@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Familia Auto Center - Concesionaria de Autos</title>
+    <title>La Familia Auto Center - Concesionaria Premium</title>
     <style>
         * {
             margin: 0;
@@ -15,37 +15,40 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f5f5;
+            background: #f8f9fa;
         }
 
         /* Navbar */
         nav {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: #1a1a1a;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         nav .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
-            color: #ff6b35;
+            color: #dc3545;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
@@ -53,135 +56,188 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: #ff6b35;
+            color: #dc3545;
+        }
+
+        .nav-contact {
+            color: #dc3545;
+            font-weight: 600;
+            font-size: 1rem;
         }
 
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
             color: white;
-            padding: 6rem 20px;
+            padding: 8rem 30px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(220, 53, 69, 0.05);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            color: #ddd;
         }
 
         .btn-primary {
             display: inline-block;
-            background: #ff6b35;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
-            padding: 12px 30px;
+            padding: 15px 40px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
         }
 
         .btn-primary:hover {
-            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
         }
 
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px;
         }
 
         /* Inventario */
         .inventory {
-            padding: 4rem 20px;
+            padding: 6rem 30px;
+            background: #f8f9fa;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
             color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
         }
 
         .cars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 3rem;
         }
 
         .car-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
         }
 
         .car-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(220, 53, 69, 0.15);
         }
 
         .car-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            background: #e0e0e0;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
         }
 
         .car-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
 
         .car-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
             color: #1a1a1a;
+        }
+
+        .car-year {
+            color: #dc3545;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
         .car-specs {
             font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
         }
 
         .car-spec-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .car-spec-label {
             font-weight: 600;
+            color: #333;
         }
 
         .btn-info {
             display: block;
             text-align: center;
-            background: #ff6b35;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
-            padding: 10px;
+            padding: 12px;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-            transition: background 0.3s;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-info:hover {
-            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
         }
 
         /* Chatbot */
@@ -189,127 +245,198 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 350px;
-            max-height: 500px;
+            width: 380px;
+            max-height: 600px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            box-shadow: 0 5px 40px rgba(0,0,0,0.16);
             display: flex;
             flex-direction: column;
             z-index: 1000;
+            border: 1px solid #eee;
         }
 
         .chatbot-header {
-            background: linear-gradient(135deg, #ff6b35 0%, #ff5722 100%);
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
-            padding: 1rem;
-            border-radius: 10px 10px 0 0;
+            padding: 1.2rem;
+            border-radius: 12px 12px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .chatbot-title {
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .chatbot-close {
             background: none;
             border: none;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chatbot-close:hover {
+            transform: scale(1.1);
         }
 
         .chatbot-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 1rem;
-            max-height: 350px;
+            padding: 1.2rem;
+            max-height: 400px;
+            background: #f8f9fa;
         }
 
         .message {
             margin-bottom: 1rem;
-            padding: 0.8rem;
-            border-radius: 8px;
-            max-width: 90%;
+            padding: 1rem;
+            border-radius: 10px;
+            max-width: 85%;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         .message.bot {
-            background: #f0f0f0;
+            background: white;
             text-align: left;
             margin-left: 0;
+            border: 1px solid #eee;
         }
 
         .message.user {
-            background: #ff6b35;
+            background: #dc3545;
             color: white;
             text-align: right;
             margin-left: auto;
         }
 
+        .message.system {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+            font-size: 0.85rem;
+        }
+
         .chatbot-input {
-            padding: 1rem;
+            padding: 1.2rem;
             border-top: 1px solid #eee;
             display: flex;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .chatbot-input input {
             flex: 1;
             padding: 0.8rem;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .chatbot-input input:focus {
+            outline: none;
+            border-color: #dc3545;
         }
 
         .chatbot-input button {
-            background: #ff6b35;
+            background: #dc3545;
             color: white;
             border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s;
+            font-weight: 600;
         }
 
         .chatbot-input button:hover {
-            background: #e55a2b;
+            background: #c82333;
         }
 
         /* Contact */
         .contact {
             background: #1a1a1a;
             color: white;
-            padding: 4rem 20px;
+            padding: 5rem 30px;
             text-align: center;
         }
 
         .contact-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .contact-item {
-            padding: 1.5rem;
+            padding: 2rem;
+            background: #2a2a2a;
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+
+        .contact-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #dc3545;
         }
 
         .contact-item a {
-            color: #ff6b35;
+            color: #dc3545;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s;
         }
 
         .contact-item a:hover {
-            text-decoration: underline;
+            color: #ff6b7a;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .nav-links {
                 gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .cars-grid {
@@ -317,17 +444,42 @@
             }
 
             .chatbot-container {
-                width: calc(100% - 40px);
-                max-height: 60vh;
+                width: calc(100% - 20px);
+                max-height: 70vh;
             }
 
             .contact-info {
                 grid-template-columns: 1fr;
             }
+
+            .container {
+                padding: 0 15px;
+            }
         }
 
         .hidden {
             display: none;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #dc3545;
+            animation: blink 1.4s infinite;
+        }
+
+        @keyframes blink {
+            0%, 20%, 50%, 80%, 100% {
+                opacity: 1;
+            }
+            40% {
+                opacity: 0.2;
+            }
+            60% {
+                opacity: 0.5;
+            }
         }
     </style>
 </head>
@@ -335,39 +487,43 @@
     <!-- Navbar -->
     <nav>
         <div class="container">
-            <div class="logo">🚗 La Familia Auto Center</div>
+            <div class="logo">🏁 La Familia Auto Center</div>
             <ul class="nav-links">
                 <li><a href="#inventory">Inventario</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
+            <div class="nav-contact">☎️ 81 2609 7169</div>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <h1>Bienvenido a La Familia Auto Center</h1>
-            <p>Tu concesionaria confiable con los mejores autos del mercado</p>
-            <button class="btn-primary" onclick="document.querySelector('.chatbot-container').classList.remove('hidden')">
-                Consultar Autos
+        <div class="hero-content">
+            <h1>Tu Concesionaria Premium de Confianza</h1>
+            <p>Los mejores vehículos con atención personalizada</p>
+            <button class="btn-primary" onclick="openChatbot()">
+                💬 Habla con nuestro Asesor
             </button>
         </div>
     </section>
 
     <!-- Inventario -->
     <section class="inventory" id="inventory">
-        <h2 class="section-title">Nuestro Inventario</h2>
-        <div class="cars-grid" id="carsGrid"></div>
+        <div class="container">
+            <h2 class="section-title">Nuestro Inventario</h2>
+            <p class="section-subtitle">Vehículos de alta calidad seleccionados especialmente para ti</p>
+            <div class="cars-grid" id="carsGrid"></div>
+        </div>
     </section>
 
     <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Ponte en Contacto</h2>
+            <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Ponte en Contacto</h2>
             <div class="contact-info">
                 <div class="contact-item">
-                    <h3>📞 Teléfono</h3>
-                    <p style="font-size: 1.3rem; margin-top: 0.5rem;">
+                    <h3>📞 Teléfono/WhatsApp</h3>
+                    <p style="margin-top: 0.5rem; font-size: 1.2rem;">
                         <a href="tel:+52812609716981">81 2609 7169</a>
                     </p>
                 </div>
@@ -384,20 +540,23 @@
     </section>
 
     <!-- Chatbot -->
-    <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-container hidden" id="chatbot">
         <div class="chatbot-header">
-            <h3>🤖 Asistente Virtual</h3>
-            <button class="chatbot-close" onclick="document.getElementById('chatbot').classList.add('hidden')">✕</button>
+            <div>
+                <div class="chatbot-title">🤖 Asesor Virtual</div>
+                <div style="font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-top: 0.3rem;">Aquí para ayudarte</div>
+            </div>
+            <button class="chatbot-close" onclick="closeChatbot()">✕</button>
         </div>
         <div class="chatbot-messages" id="chatMessages"></div>
         <div class="chatbot-input">
             <input 
                 type="text" 
                 id="userInput" 
-                placeholder="Pregunta sobre un auto..." 
+                placeholder="Escribe tu pregunta..." 
                 onkeypress="handleChatKeyPress(event)"
             >
-            <button onclick="sendChatMessage()">Enviar</button>
+            <button onclick="sendChatMessage()">→</button>
         </div>
     </div>
 
@@ -414,22 +573,10 @@
                 km: "180,000 km",
                 transmision: "Automática",
                 interiores: "Sintético",
-                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&h=300&fit=crop"
+                image: "autos/Corolla.jpg"
             },
             {
                 id: 2,
-                tipo: "Pickup",
-                marca: "Ford",
-                modelo: "F150 Raptor",
-                año: 2015,
-                color: "Roja",
-                km: "98,000 km",
-                transmision: "Estándar",
-                interiores: "Piel",
-                image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&h=300&fit=crop"
-            },
-            {
-                id: 3,
                 tipo: "Hatchback",
                 marca: "Suzuki",
                 modelo: "Swift",
@@ -438,22 +585,10 @@
                 km: "50,000 km",
                 transmision: "Automática",
                 interiores: "Piel",
-                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500&h=300&fit=crop"
+                image: "autos/Swift.jpg"
             },
             {
-                id: 4,
-                tipo: "SUV",
-                marca: "Mazda",
-                modelo: "CX-50 Signature",
-                año: 2024,
-                color: "Negra",
-                km: "20,000 km",
-                transmision: "Automática",
-                interiores: "Sintético",
-                image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=500&h=300&fit=crop"
-            },
-            {
-                id: 5,
+                id: 3,
                 tipo: "Deportivo",
                 marca: "Chevrolet",
                 modelo: "Corvette C8",
@@ -462,9 +597,35 @@
                 km: "5,000 km",
                 transmision: "Estándar",
                 interiores: "Piel",
-                image: "https://images.unsplash.com/photo-1570129477492-45a003537e1f?w=500&h=300&fit=crop"
+                image: "autos/Corvette.jpg"
+            },
+            {
+                id: 4,
+                tipo: "SUV",
+                marca: "Mazda",
+                modelo: "CX-50",
+                año: 2024,
+                color: "Negra",
+                km: "20,000 km",
+                transmision: "Automática",
+                interiores: "Sintético",
+                image: "autos/CX-50.jpg"
+            },
+            {
+                id: 5,
+                tipo: "Pickup",
+                marca: "Ford",
+                modelo: "F150 Raptor",
+                año: 2015,
+                color: "Roja",
+                km: "98,000 km",
+                transmision: "Estándar",
+                interiores: "Piel",
+                image: "autos/F150.jpg"
             }
         ];
+
+        let selectedCar = null;
 
         // Cargar galería de autos
         function loadCars() {
@@ -473,14 +634,11 @@
                 const card = document.createElement('div');
                 card.className = 'car-card';
                 card.innerHTML = `
-                    <img src="${car.image}" alt="${car.marca} ${car.modelo}" class="car-image" onerror="this.src='https://via.placeholder.com/280x200?text=${car.marca}+${car.modelo}'">
+                    <img src="${car.image}" alt="${car.marca} ${car.modelo}" class="car-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22250%22%3E%3Crect fill=%22%23ddd%22 width=%22300%22 height=%22250%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22sans-serif%22 font-size=%2216%22 fill=%22%23999%22%3E${car.marca} ${car.modelo}%3C/text%3E%3C/svg%3E'">
                     <div class="car-info">
                         <div class="car-title">${car.marca} ${car.modelo}</div>
+                        <div class="car-year">${car.año}</div>
                         <div class="car-specs">
-                            <div class="car-spec-item">
-                                <span class="car-spec-label">Año:</span>
-                                <span>${car.año}</span>
-                            </div>
                             <div class="car-spec-item">
                                 <span class="car-spec-label">Tipo:</span>
                                 <span>${car.tipo}</span>
@@ -502,8 +660,8 @@
                                 <span>${car.interiores}</span>
                             </div>
                         </div>
-                        <button class="btn-info" onclick="selectCarForForm(${car.id}, '${car.marca} ${car.modelo} ${car.año}')">
-                            Agendar Cita
+                        <button class="btn-info" onclick="selectCarAndChat(${car.id}, '${car.marca} ${car.modelo} ${car.año}')">
+                            Consultar
                         </button>
                     </div>
                 `;
@@ -511,47 +669,34 @@
             });
         }
 
-        // Chatbot
-        const responses = {
-            default: [
-                "¿Hola! 👋 ¿En qué auto estás interesado?",
-                "Cuéntame, ¿buscas algún modelo específico?"
-            ],
-            toyota: "El Toyota Corolla 2020 es un sedán confiable, con transmisión automática, color azul/gris y 180,000 km. ¡Excelente para familias! 🚗",
-            ford: "El Ford F150 Raptor 2015 es una pickup potente, con transmisión estándar, color roja y 98,000 km. ¡Perfecta para trabajo! 🛻",
-            suzuki: "El Suzuki Swift 2021 es un hatchback ágil, con transmisión automática, color blanco y 50,000 km. ¡Ideal para ciudad! 🚙",
-            mazda: "El Mazda CX-50 Signature 2024 es un SUV moderno, con transmisión automática, color negra y 20,000 km. ¡Lo más nuevo! 🏎️",
-            chevrolet: "El Chevrolet Corvette C8 2025 es un deportivo espectacular, con transmisión estándar, color blanco y 5,000 km. ¡Pura adrenalina! ⚡",
-            agendar: "Perfecto, voy a redirigirte al formulario para agendar tu cita. 📋",
-            contacto: "Puedes contactarnos al 81 2609 7169 o seguirnos en Facebook: https://www.facebook.com/share/1Y5sxcB7Qm/?mibextid=wwXIfr",
-            ayuda: "Soy un asistente virtual. Puedo ayudarte a:\n• Conocer detalles de nuestros autos\n• Agendar una cita para ver un auto\n• Darte información de contacto\n¿Qué necesitas?"
-        };
-
-        function getChatResponse(message) {
-            const msg = message.toLowerCase();
-            
-            if (msg.includes('toyota') || msg.includes('corolla')) return responses.toyota;
-            if (msg.includes('ford') || msg.includes('f150') || msg.includes('raptor')) return responses.ford;
-            if (msg.includes('suzuki') || msg.includes('swift')) return responses.suzuki;
-            if (msg.includes('mazda') || msg.includes('cx-50')) return responses.mazda;
-            if (msg.includes('chevrolet') || msg.includes('corvette')) return responses.chevrolet;
-            if (msg.includes('agendar') || msg.includes('cita')) return responses.agendar;
-            if (msg.includes('contacto') || msg.includes('telefono') || msg.includes('whatsapp')) return responses.contacto;
-            if (msg.includes('ayuda') || msg.includes('hola') || msg.includes('hi')) return responses.ayuda;
-            
-            return responses.default[Math.floor(Math.random() * responses.default.length)];
+        // Chatbot Functions
+        function openChatbot() {
+            document.getElementById('chatbot').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('userInput').focus();
+            }, 100);
         }
 
-        function addMessage(text, isBot) {
+        function closeChatbot() {
+            document.getElementById('chatbot').classList.add('hidden');
+        }
+
+        function addMessage(text, isBot, isSystem = false) {
             const messagesContainer = document.getElementById('chatMessages');
             const message = document.createElement('div');
-            message.className = `message ${isBot ? 'bot' : 'user'}`;
+            
+            if (isSystem) {
+                message.className = 'message system';
+            } else {
+                message.className = `message ${isBot ? 'bot' : 'user'}`;
+            }
+            
             message.textContent = text;
             messagesContainer.appendChild(message);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
-        function sendChatMessage() {
+        async function sendChatMessage() {
             const input = document.getElementById('userInput');
             const message = input.value.trim();
             
@@ -560,17 +705,56 @@
             addMessage(message, false);
             input.value = '';
             
-            setTimeout(() => {
-                const response = getChatResponse(message);
-                addMessage(response, true);
-                
-                if (message.toLowerCase().includes('agendar') || message.toLowerCase().includes('cita')) {
-                    setTimeout(() => {
-                        const formLink = 'https://forms.gle/hvfd7L1CmwTpu4FL9';
-                        addMessage(`📋 Abre este formulario para agendar tu cita: ${formLink}`, true);
-                    }, 500);
+            // Mostrar que está escribiendo
+            const typingMsg = document.createElement('div');
+            typingMsg.className = 'message bot';
+            typingMsg.innerHTML = '<span class="loading"></span><span class="loading" style="animation-delay: 0.2s;"></span><span class="loading" style="animation-delay: 0.4s;"></span>';
+            document.getElementById('chatMessages').appendChild(typingMsg);
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+            
+            try {
+                // Llamar al servidor local
+                const response = await fetch('http://localhost:5000/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: 'default'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al conectar con el servidor');
                 }
-            }, 500);
+
+                const data = await response.json();
+                typingMsg.remove();
+                
+                if (data.success) {
+                    addMessage(data.message, true);
+                } else {
+                    addMessage('⚠️ ' + data.error, true, true);
+                }
+                
+            } catch (error) {
+                typingMsg.remove();
+                addMessage('⚠️ El servidor no está disponible. Por favor, llama al 81 2609 7169. 📞', true, true);
+                console.error('Error:', error);
+            }
+        }
+
+        function selectCarAndChat(carId, carName) {
+            selectedCar = carId;
+            openChatbot();
+            
+            setTimeout(() => {
+                addMessage(`Hola, estoy interesado en el ${carName}`, false);
+                setTimeout(() => {
+                    sendChatMessage();
+                }, 500);
+            }, 300);
         }
 
         function handleChatKeyPress(event) {
@@ -579,29 +763,28 @@
             }
         }
 
-        function selectCarForForm(carId, carName) {
-            addMessage(`Estoy interesado en el ${carName}`, false);
-            setTimeout(() => {
-                addMessage(`¡Excelente opción! Te redireccionaré al formulario para agendar tu cita. 📋`, true);
-                setTimeout(() => {
-                    const formLink = 'https://forms.gle/hvfd7L1CmwTpu4FL9';
-                    window.open(formLink, '_blank');
-                }, 500);
-            }, 500);
-        }
-
         // Inicializar
         document.addEventListener('DOMContentLoaded', () => {
             loadCars();
-            const chatContainer = document.getElementById('chatbot');
-            chatContainer.classList.add('hidden');
             
-            // Bienvenida inicial
             setTimeout(() => {
-                addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿Necesitas ayuda para encontrar tu auto perfecto?", true);
+                if (!document.getElementById('chatbot').classList.contains('hidden')) {
+                    addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?", true);
+                }
             }, 500);
+        });
+
+        // Mostrar bienvenida cuando abra el chat
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-primary') && e.target.textContent.includes('Habla')) {
+                setTimeout(() => {
+                    const messagesContainer = document.getElementById('chatMessages');
+                    if (messagesContainer.children.length === 0) {
+                        addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy? Puedo ayudarte con:\n\n• Información sobre nuestros vehículos\n• Agendar una cita\n• Responder dudas\n\n¿Cuál es tu interés?", true);
+                    }
+                }, 300);
+            }
         });
     </script>
 </body>
-</html><!-- Build Sat May 16 11:41:38 MST 2026 -->
-/* Force rebuild 1778957387 */
+</html>

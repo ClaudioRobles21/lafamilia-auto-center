@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Familia Auto Center - Concesionaria de Autos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        /* Navbar */
+        nav {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            padding: 6rem 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Inventario */
+        .inventory {
+            padding: 4rem 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #e0e0e0;
+        }
+
+        .car-info {
+            padding: 1.5rem;
+        }
+
+        .car-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .car-specs {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .car-spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .car-spec-label {
+            font-weight: 600;
+        }
+
+        .btn-info {
+            display: block;
+            text-align: center;
+            background: #ff6b35;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn-info:hover {
+            background: #e55a2b;
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff5722 100%);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            max-height: 350px;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            max-width: 90%;
+        }
+
+        .message.bot {
+            background: #f0f0f0;
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .message.user {
+            background: #ff6b35;
+            color: white;
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-input button {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chatbot-input button:hover {
+            background: #e55a2b;
+        }
+
+        /* Contact */
+        .contact {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+        }
+
+        .contact-item a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chatbot-container {
+                width: calc(100% - 40px);
+                max-height: 60vh;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <div class="logo">🚗 La Familia Auto Center</div>
+            <ul class="nav-links">
+                <li><a href="#inventory">Inventario</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Bienvenido a La Familia Auto Center</h1>
+            <p>Tu concesionaria confiable con los mejores autos del mercado</p>
+            <button class="btn-primary" onclick="document.querySelector('.chatbot-container').classList.remove('hidden')">
+                Consultar Autos
+            </button>
+        </div>
+    </section>
+
+    <!-- Inventario -->
+    <section class="inventory" id="inventory">
+        <h2 class="section-title">Nuestro Inventario</h2>
+        <div class="cars-grid" id="carsGrid"></div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Ponte en Contacto</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📞 Teléfono</h3>
+                    <p style="font-size: 1.3rem; margin-top: 0.5rem;">
+                        <a href="tel:+52812609716981">81 2609 7169</a>
+                    </p>
+                </div>
+                <div class="contact-item">
+                    <h3>📘 Facebook</h3>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="https://www.facebook.com/share/1Y5sxcB7Qm/?mibextid=wwXIfr" target="_blank">
+                            Síguenos en Facebook
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <h3>🤖 Asistente Virtual</h3>
+            <button class="chatbot-close" onclick="document.getElementById('chatbot').classList.add('hidden')">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages"></div>
+        <div class="chatbot-input">
+            <input 
+                type="text" 
+                id="userInput" 
+                placeholder="Pregunta sobre un auto..." 
+                onkeypress="handleChatKeyPress(event)"
+            >
+            <button onclick="sendChatMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Datos de autos
+        const cars = [
+            {
+                id: 1,
+                tipo: "Sedan",
+                marca: "Toyota",
+                modelo: "Corolla",
+                año: 2020,
+                color: "Azul/Gris",
+                km: "180,000 km",
+                transmision: "Automática",
+                interiores: "Sintético",
+                image: "https://drive.google.com/uc?export=view&id=1gXcQjJJAgh7LgyDBrm-5GsH20GOQyEFD"
+            },
+            {
+                id: 2,
+                tipo: "Pickup",
+                marca: "Ford",
+                modelo: "F150 Raptor",
+                año: 2015,
+                color: "Roja",
+                km: "98,000 km",
+                transmision: "Estándar",
+                interiores: "Piel",
+                image: "https://drive.google.com/uc?export=view&id=1DIbvhc8Ra473LtXHASmhO6Cvc7NiYMMX"
+            },
+            {
+                id: 3,
+                tipo: "Hatchback",
+                marca: "Suzuki",
+                modelo: "Swift",
+                año: 2021,
+                color: "Blanco",
+                km: "50,000 km",
+                transmision: "Automática",
+                interiores: "Piel",
+                image: "https://drive.google.com/uc?export=view&id=1A3JCgVI1uerNtyp8_PSZuyBExoi5hfKx"
+            },
+            {
+                id: 4,
+                tipo: "SUV",
+                marca: "Mazda",
+                modelo: "CX-50 Signature",
+                año: 2024,
+                color: "Negra",
+                km: "20,000 km",
+                transmision: "Automática",
+                interiores: "Sintético",
+                image: "https://drive.google.com/uc?export=view&id=1zZEoFD7Fxd5w4lZi331LxOvAL_aqD5yj"
+            },
+            {
+                id: 5,
+                tipo: "Deportivo",
+                marca: "Chevrolet",
+                modelo: "Corvette C8",
+                año: 2025,
+                color: "Blanco",
+                km: "5,000 km",
+                transmision: "Estándar",
+                interiores: "Piel",
+                image: "https://drive.google.com/uc?export=view&id=14Wwr7PXgYZEuFBn1fUx4MtaT5jAJn3q1"
+            }
+        ];
+
+        // Cargar galería de autos
+        function loadCars() {
+            const grid = document.getElementById('carsGrid');
+            cars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'car-card';
+                card.innerHTML = `
+                    <img src="${car.image}" alt="${car.marca} ${car.modelo}" class="car-image" onerror="this.src='https://via.placeholder.com/280x200?text=${car.marca}+${car.modelo}'">
+                    <div class="car-info">
+                        <div class="car-title">${car.marca} ${car.modelo}</div>
+                        <div class="car-specs">
+                            <div class="car-spec-item">
+                                <span class="car-spec-label">Año:</span>
+                                <span>${car.año}</span>
+                            </div>
+                            <div class="car-spec-item">
+                                <span class="car-spec-label">Tipo:</span>
+                                <span>${car.tipo}</span>
+                            </div>
+                            <div class="car-spec-item">
+                                <span class="car-spec-label">Color:</span>
+                                <span>${car.color}</span>
+                            </div>
+                            <div class="car-spec-item">
+                                <span class="car-spec-label">Km:</span>
+                                <span>${car.km}</span>
+                            </div>
+                            <div class="car-spec-item">
+                                <span class="car-spec-label">Transmisión:</span>
+                                <span>${car.transmision}</span>
+                            </div>
+                            <div class="car-spec-item">
+                                <span class="car-spec-label">Interiores:</span>
+                                <span>${car.interiores}</span>
+                            </div>
+                        </div>
+                        <button class="btn-info" onclick="selectCarForForm(${car.id}, '${car.marca} ${car.modelo} ${car.año}')">
+                            Agendar Cita
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Chatbot
+        const responses = {
+            default: [
+                "¿Hola! 👋 ¿En qué auto estás interesado?",
+                "Cuéntame, ¿buscas algún modelo específico?"
+            ],
+            toyota: "El Toyota Corolla 2020 es un sedán confiable, con transmisión automática, color azul/gris y 180,000 km. ¡Excelente para familias! 🚗",
+            ford: "El Ford F150 Raptor 2015 es una pickup potente, con transmisión estándar, color roja y 98,000 km. ¡Perfecta para trabajo! 🛻",
+            suzuki: "El Suzuki Swift 2021 es un hatchback ágil, con transmisión automática, color blanco y 50,000 km. ¡Ideal para ciudad! 🚙",
+            mazda: "El Mazda CX-50 Signature 2024 es un SUV moderno, con transmisión automática, color negra y 20,000 km. ¡Lo más nuevo! 🏎️",
+            chevrolet: "El Chevrolet Corvette C8 2025 es un deportivo espectacular, con transmisión estándar, color blanco y 5,000 km. ¡Pura adrenalina! ⚡",
+            agendar: "Perfecto, voy a redirigirte al formulario para agendar tu cita. 📋",
+            contacto: "Puedes contactarnos al 81 2609 7169 o seguirnos en Facebook: https://www.facebook.com/share/1Y5sxcB7Qm/?mibextid=wwXIfr",
+            ayuda: "Soy un asistente virtual. Puedo ayudarte a:\n• Conocer detalles de nuestros autos\n• Agendar una cita para ver un auto\n• Darte información de contacto\n¿Qué necesitas?"
+        };
+
+        function getChatResponse(message) {
+            const msg = message.toLowerCase();
+            
+            if (msg.includes('toyota') || msg.includes('corolla')) return responses.toyota;
+            if (msg.includes('ford') || msg.includes('f150') || msg.includes('raptor')) return responses.ford;
+            if (msg.includes('suzuki') || msg.includes('swift')) return responses.suzuki;
+            if (msg.includes('mazda') || msg.includes('cx-50')) return responses.mazda;
+            if (msg.includes('chevrolet') || msg.includes('corvette')) return responses.chevrolet;
+            if (msg.includes('agendar') || msg.includes('cita')) return responses.agendar;
+            if (msg.includes('contacto') || msg.includes('telefono') || msg.includes('whatsapp')) return responses.contacto;
+            if (msg.includes('ayuda') || msg.includes('hola') || msg.includes('hi')) return responses.ayuda;
+            
+            return responses.default[Math.floor(Math.random() * responses.default.length)];
+        }
+
+        function addMessage(text, isBot) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const message = document.createElement('div');
+            message.className = `message ${isBot ? 'bot' : 'user'}`;
+            message.textContent = text;
+            messagesContainer.appendChild(message);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            addMessage(message, false);
+            input.value = '';
+            
+            setTimeout(() => {
+                const response = getChatResponse(message);
+                addMessage(response, true);
+                
+                if (message.toLowerCase().includes('agendar') || message.toLowerCase().includes('cita')) {
+                    setTimeout(() => {
+                        const formLink = 'https://forms.gle/hvfd7L1CmwTpu4FL9';
+                        addMessage(`📋 Abre este formulario para agendar tu cita: ${formLink}`, true);
+                    }, 500);
+                }
+            }, 500);
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function selectCarForForm(carId, carName) {
+            addMessage(`Estoy interesado en el ${carName}`, false);
+            setTimeout(() => {
+                addMessage(`¡Excelente opción! Te redireccionaré al formulario para agendar tu cita. 📋`, true);
+                setTimeout(() => {
+                    const formLink = 'https://forms.gle/hvfd7L1CmwTpu4FL9';
+                    window.open(formLink, '_blank');
+                }, 500);
+            }, 500);
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCars();
+            const chatContainer = document.getElementById('chatbot');
+            chatContainer.classList.add('hidden');
+            
+            // Bienvenida inicial
+            setTimeout(() => {
+                addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿Necesitas ayuda para encontrar tu auto perfecto?", true);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,128 +1,166 @@
-# 🚗 La Familia Auto Center - Guía de Configuración
+# 🚗 La Familia Auto Center - Guía de Configuración (TODO LISTO)
 
-## Requisitos Previos
+## ✅ ESTADO ACTUAL
 
-- Python 3.8+
-- pip
-- API Key de Anthropic (Claude)
-- Navegador web moderno
+- ✅ Imágenes de los 5 autos descargadas
+- ✅ Dependencias instaladas
+- ✅ Servidor backend listo
+- ✅ Página web profesional lista
+- ⏳ Solo falta tu API Key de Anthropic
 
-## 📋 Paso 1: Obtener API Key de Anthropic
+## 📋 PASO 1: Crear archivo `.env` con tu API Key
 
-1. Ve a https://console.anthropic.com/
-2. Crea una cuenta o inicia sesión
-3. Ve a "API Keys" en el panel lateral
-4. Crea una nueva clave
-5. Cópialaa (necesitarás esto en el Paso 3)
+**⚠️ IMPORTANTE:** Ya subiste tu API Key. Ahora debes crear un archivo `.env` LOCAL (en tu VPS) con tu clave.
 
-## 📁 Paso 2: Copiar Imágenes de Autos
+En tu terminal de VPS:
 
-Las imágenes deben estar en la carpeta `autos/` con estos nombres exactos:
+```bash
+cd /data/.openclaw/workspace
+cp .env.example .env
+# Edita .env y cambia:
+# ANTHROPIC_API_KEY=tu_clave_aqui
+```
+
+O usa nano/vi para crear el archivo:
+```bash
+nano .env
+```
+
+Luego pega tu API Key (la que usaste antes)
+
+## ✅ Paso 2: Las Imágenes YA Están Descargadas
 
 ```
 autos/
-├── Corolla.jpg       (Toyota Corolla 2020)
-├── Swift.jpg         (Suzuki Swift 2021)
-├── Corvette.jpg      (Chevrolet Corvette C8 2025)
-├── CX-50.jpg         (Mazda CX-50 2024)
-└── F150.jpg          (Ford F150 Raptor 2015)
+├── Corolla.jpg       ✅ (Toyota Corolla 2020)
+├── Swift.jpg         ✅ (Suzuki Swift 2021)
+├── Corvette.jpg      ✅ (Chevrolet Corvette C8 2025)
+├── CX-50.jpg         ✅ (Mazda CX-50 2024)
+└── F150.jpg          ✅ (Ford F150 Raptor 2015)
 ```
 
-**Instrucciones:**
-1. Descarga las 5 imágenes que subió el Boss
-2. Crea la carpeta `autos` en la raíz del proyecto
-3. Coloca las imágenes con los nombres exactos listados arriba
+## ✅ Paso 3: Dependencias YA Están Instaladas
 
-## 🔧 Paso 3: Configurar Variables de Entorno
+Las librerías necesarias ya se instalaron:
+- Flask
+- anthropic
+- flask-cors
+- python-dotenv
 
-Crea un archivo `.env` en la raíz del proyecto:
-
-```bash
-ANTHROPIC_API_KEY=tu_clave_aqui
-```
-
-Reemplaza `tu_clave_aqui` con tu API Key de Anthropic.
-
-## 📦 Paso 4: Instalar Dependencias
+## 🚀 PASO 4: INICIAR EL SERVIDOR (EN UNA TERMINAL)
 
 ```bash
-pip install -r requirements_chatbot.txt
-```
-
-## 🚀 Paso 5: Ejecutar el Servidor
-
-```bash
-python chatbot_server.py
+cd /data/.openclaw/workspace
+./run_chatbot.sh
 ```
 
 Deberías ver:
 ```
-🚗 La Familia Auto Center - Chatbot Server iniciando...
-⚠️  Asegúrate de tener ANTHROPIC_API_KEY en las variables de entorno
- * Running on http://0.0.0.0:5000
+╔════════════════════════════════════════════════════════════════╗
+║        🚗 La Familia Auto Center - Chatbot Server 🤖          ║
+╚════════════════════════════════════════════════════════════════╝
+
+📸 Verificando imágenes de autos...
+   ✅ Corolla.jpg
+   ✅ Swift.jpg
+   ...
 ```
 
-## 🌐 Paso 6: Abrir la Página Web
+## 🌐 PASO 5: SERVIR LA PÁGINA WEB (EN OTRA TERMINAL)
 
-1. Abre tu navegador
-2. Ve a: `http://localhost:8000` (o donde tengas servida la página)
-3. O simplemente abre el archivo `index.html` directamente
-
-**Nota:** Si abres `index.html` directamente (sin servidor), el chatbot no funcionará. Necesitas servir la página con un servidor web simple.
-
-### Opción A: Servir con Python (Recomendado)
+Abre una NUEVA terminal en la misma carpeta:
 
 ```bash
-# En otra terminal, en la carpeta del proyecto:
-python -m http.server 8000
+cd /data/.openclaw/workspace
+./serve_web.sh
 ```
 
-Luego abre: http://localhost:8000
-
-### Opción B: Servir con Node.js
-
-```bash
-npx http-server
+Deberías ver:
+```
+📍 Servidor web escuchando en: http://localhost:8000
 ```
 
-## ✅ Verificar que Todo Funcione
+## 🌐 PASO 6: Abrir en tu Navegador
+
+Abre: **http://localhost:8000**
+
+Verifica que:
+1. ✅ Se carga la página (galería de autos visible)
+2. ✅ Las imágenes de los autos se ven
+3. ✅ El botón "💬 Habla con nuestro Asesor" aparece
+
+## ✅ VERIFICAR QUE TODO FUNCIONE
 
 1. Abre http://localhost:8000 en tu navegador
 2. Haz clic en "💬 Habla con nuestro Asesor"
 3. Escribe: "Hola"
-4. El chatbot debe responder con un mensaje de bienvenida
+4. ✅ El chatbot debe responder con un mensaje de bienvenida
+5. Prueba: "Quiero información sobre el Corolla"
+6. Prueba: "Quiero agendar una cita"
 
-## 🐛 Solución de Problemas
+## 🐛 SOLUCIÓN DE PROBLEMAS
 
 ### El chatbot no responde:
-- Verifica que el servidor está corriendo (`python chatbot_server.py`)
-- Verifica que tu API Key de Anthropic es correcta
-- Abre la consola del navegador (F12) y revisa los errores
+```bash
+# 1. Verifica que .env existe con tu API Key
+cat .env
+
+# 2. Verifica que el servidor chatbot está corriendo
+# (en la terminal 1, deberías ver puerto 5000)
+
+# 3. En el navegador, presiona F12 y revisa la consola para errores
+```
 
 ### Las imágenes no se ven:
-- Verifica que las imágenes están en `autos/` con los nombres correctos
-- Revisa la consola del navegador para ver los errores
+```bash
+# Verifica que existen:
+ls -la autos/
+
+# Deberías ver 5 imágenes JPEG (no HTML)
+file autos/*.jpg
+```
 
 ### El puerto 5000 está en uso:
 ```bash
-# Cambiar puerto en chatbot_server.py
-# Línea final: app.run(debug=False, host='0.0.0.0', port=8001)
+# Ver qué está usando el puerto:
+lsof -i :5000
+
+# Cambiar puerto en chatbot_server.py (línea final):
+# app.run(debug=False, host='0.0.0.0', port=8001)
 ```
 
-## 📱 Usar en Producción (GitHub Pages)
+### El puerto 8000 está en uso:
+```bash
+# Usar otro puerto:
+python -m http.server 9000
+# Luego abre: http://localhost:9000
+```
 
-Para usar en GitHub Pages con un servidor externo:
-
-1. Reemplaza `http://localhost:5000` en el HTML con tu servidor de producción
-2. Configura CORS en tu servidor de producción
-3. Despliega el servidor en una plataforma como Heroku, Railway, o tu propio servidor
-
-## 📞 Contacto
+## 📞 INFORMACIÓN DE CONTACTO
 
 - **Teléfono:** 81 2609 7169
+- **WhatsApp:** 81 2609 7169
 - **Facebook:** https://www.facebook.com/share/1Y5sxcB7Qm/?mibextid=wwXIfr
+- **Correo:** autocenterlafamilia@gmail.com
+
+## 🔐 SEGURIDAD
+
+⚠️ **IMPORTANTE:** Tu API Key está en `/.env` y NO se sube a GitHub gracias a `.gitignore`.
+
+Si accidentalmente la subes:
+1. Ve a https://console.anthropic.com/
+2. Revoca la API Key comprometida
+3. Crea una nueva
+
+## 📱 PRÓXIMO PASO (OPCIONAL)
+
+Para usar en producción con GitHub Pages:
+1. Desplega `chatbot_server.py` en un servidor (Heroku, Railway, tu servidor)
+2. Cambia `http://localhost:5000` por la URL de tu servidor en `index.html`
+3. Habilita CORS en el servidor de producción
 
 ---
 
 **Creado por:** Car IA  
-**Última actualización:** 2026-05-16
+**Última actualización:** 2026-05-16  
+**Estado:** ✅ Listo para usar (solo falta tu API Key en .env)

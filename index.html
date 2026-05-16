@@ -956,6 +956,47 @@
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
+        let chatbotResponses = null;
+
+        // Cargar respuestas del JSON
+        async function loadChatbotResponses() {
+            try {
+                const response = await fetch('chatbot-responses.json');
+                chatbotResponses = await response.json();
+            } catch (error) {
+                console.error('Error al cargar respuestas:', error);
+                chatbotResponses = { autos: [], informacion: [], default_response: 'Error al cargar respuestas' };
+            }
+        }
+
+        // Buscar respuesta en la base de datos
+        function findResponse(userMessage) {
+            if (!chatbotResponses) return null;
+
+            const messageLower = userMessage.toLowerCase().trim();
+            
+            // Buscar en información general
+            for (let item of chatbotResponses.informacion) {
+                for (let keyword of item.keywords) {
+                    if (messageLower.includes(keyword.toLowerCase())) {
+                        return item.respuesta;
+                    }
+                }
+            }
+            
+            // Buscar en autos
+            for (let auto of chatbotResponses.autos) {
+                for (let keyword of auto.keywords) {
+                    if (messageLower.includes(keyword.toLowerCase())) {
+                        return auto.respuesta;
+                    }
+                }
+            }
+            
+            // Respuesta por defecto
+            return chatbotResponses.default_response;
+        }
+
         async function sendChatMessage() {
             const input = document.getElementById('userInput');
             const message = input.value.trim();
@@ -972,37 +1013,12 @@
             document.getElementById('chatMessages').appendChild(typingMsg);
             document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
             
-            try {
-                // Llamar al servidor local
-                const response = await fetch('http://localhost:5000/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        message: message,
-                        session_id: 'default'
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error al conectar con el servidor');
-                }
-
-                const data = await response.json();
+            // Simular delay de procesamiento
+            setTimeout(() => {
                 typingMsg.remove();
-                
-                if (data.success) {
-                    addMessage(data.message, true);
-                } else {
-                    addMessage('⚠️ ' + data.error, true, true);
-                }
-                
-            } catch (error) {
-                typingMsg.remove();
-                addMessage('⚠️ El servidor no está disponible. Por favor, llama al 81 2609 7169. 📞', true, true);
-                console.error('Error:', error);
-            }
+                const response = findResponse(message);
+                addMessage(response, true);
+            }, 800);
         }
 
         function selectCarAndChat(carId, carName) {
@@ -1066,10 +1082,11 @@
         // Inicializar
         document.addEventListener('DOMContentLoaded', () => {
             loadCars();
+            loadChatbotResponses();
             
             setTimeout(() => {
                 if (!document.getElementById('chatbot').classList.contains('hidden')) {
-                    addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?", true);
+                    addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?\n\nPuedo ayudarte con:\n• Información sobre nuestros vehículos\n• Horarios de atención\n• Ubicación\n• Financiamiento\n\n¿Cuál es tu interés?", true);
                 }
             }, 500);
         });
@@ -1080,7 +1097,7 @@
                 setTimeout(() => {
                     const messagesContainer = document.getElementById('chatMessages');
                     if (messagesContainer.children.length === 0) {
-                        addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy? Puedo ayudarte con:\n\n• Información sobre nuestros vehículos\n• Agendar una cita\n• Responder dudas\n\n¿Cuál es tu interés?", true);
+                        addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?\n\nPuedo ayudarte con:\n• Información sobre nuestros vehículos\n• Horarios de atención\n• Ubicación\n• Financiamiento\n\n¿Cuál es tu interés?", true);
                     }
                 }, 300);
             }

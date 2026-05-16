@@ -1,0 +1,60 @@
+{
+  "autos": [
+    {
+      "nombre": "Ford F150 Raptor 2015",
+      "keywords": ["f150", "raptor", "pickup", "ford"],
+      "respuesta": "🏎️ **Ford F150 Raptor 2015**\n\n📍 Pickup de lujo\n🎨 Color: Rojo\n⏱️ Kilómetros: 98,000 km\n⚙️ Transmisión: Estándar\n🛋️ Interiores: Piel premium\n💪 Potente y confiable\n\n¿Te interesa? Contáctanos al 81 2609 7169 o agenda una prueba. 🚗"
+    },
+    {
+      "nombre": "Suzuki Swift 2021",
+      "keywords": ["suzuki", "swift", "hatchback"],
+      "respuesta": "🚙 **Suzuki Swift 2021**\n\n📍 Hatchback moderno\n🎨 Color: Blanco\n⏱️ Kilómetros: 50,000 km\n⚙️ Transmisión: Automática\n🛋️ Interiores: Piel\n💨 Económico y ágil\n\n¿Te interesa? Contáctanos al 81 2609 7169 o agenda una prueba. 🚗"
+    },
+    {
+      "nombre": "Toyota Corolla 2020",
+      "keywords": ["toyota", "corolla", "sedán"],
+      "respuesta": "🚗 **Toyota Corolla 2020**\n\n📍 Sedán confiable\n🎨 Color: Azul/Gris\n⏱️ Kilómetros: 180,000 km\n⚙️ Transmisión: Automática\n🛋️ Interiores: Sintético\n✅ Marca de confianza\n\n¿Te interesa? Contáctanos al 81 2609 7169 o agenda una prueba. 🚗"
+    },
+    {
+      "nombre": "Mazda CX-50 2024",
+      "keywords": ["mazda", "cx-50", "suv"],
+      "respuesta": "🏎️ **Mazda CX-50 2024**\n\n📍 SUV deportivo\n🎨 Color: Negro\n⏱️ Kilómetros: 20,000 km\n⚙️ Transmisión: Automática\n🛋️ Interiores: Sintético\n🌟 Diseño moderno y ágil\n\n¿Te interesa? Contáctanos al 81 2609 7169 o agenda una prueba. 🚗"
+    },
+    {
+      "nombre": "Chevrolet Corvette C8 2025",
+      "keywords": ["corvette", "chevrolet", "deportivo", "c8"],
+      "respuesta": "🏁 **Chevrolet Corvette C8 2025**\n\n📍 Deportivo premium\n🎨 Color: Blanco\n⏱️ Kilómetros: 5,000 km\n⚙️ Transmisión: Estándar\n🛋️ Interiores: Piel\n⚡ Desempeño excepcional\n\n¿Te interesa? Contáctanos al 81 2609 7169 o agenda una prueba. 🚗"
+    }
+  ],
+  "informacion": [
+    {
+      "keywords": ["horario", "horarios", "abierto", "abre", "cierra", "cerrado", "qué hora"],
+      "respuesta": "🕐 **Horarios de Atención**\n\n📅 Abierto todos los días\n⏰ De 8:00 AM a 7:00 PM\n\n¿Necesitas agendar una cita? Llámanos al 81 2609 7169 o completa nuestro formulario. 📞"
+    },
+    {
+      "keywords": ["ubicación", "ubicacion", "dónde", "donde", "dirección", "direccion", "localización", "localizacion", "calle"],
+      "respuesta": "📍 **Nuestra Ubicación**\n\nLas Américas, C. 17 604\nLas Americas, 89420\nTampico, Tamaulipas\n\nBuscamos en Google Maps: \"La Familia Auto Center\"\n\n¿Quieres que te ayude con algo más? 🚗"
+    },
+    {
+      "keywords": ["contacto", "teléfono", "numero", "whatsapp", "chat", "llamada", "email"],
+      "respuesta": "📞 **Contacto Directo**\n\n☎️ Teléfono/WhatsApp: 81 2609 7169\n📍 Ubicación: Las Américas, C. 17 604, Tampico, Tamps.\n🕐 Horarios: 8:00 AM - 7:00 PM\n\n¡Estamos listos para ayudarte! 🚗"
+    },
+    {
+      "keywords": ["nosotros", "quiénes somos", "quienes somos", "misión", "vision", "valores", "empresa", "confianza"],
+      "respuesta": "🏁 **La Familia Auto Center**\n\nSomos una concesionaria dedicada a construir **relaciones de confianza**. No solo vendemos carros, sino que ofrecemos:\n\n✅ Transparencia total\n✅ Asesoría personalizada\n✅ Calidad garantizada\n✅ Servicio continuo\n✅ Somos tu familia automotriz\n\n¿Quieres conocer nuestros vehículos disponibles? 🚗"
+    },
+    {
+      "keywords": ["disponibles", "disponible", "tengo", "tienen", "qué autos", "que autos", "modelos", "vehículos", "vehiculos"],
+      "respuesta": "🚗 **Vehículos Disponibles**\n\n1️⃣ Ford F150 Raptor 2015 - Pickup rojo\n2️⃣ Suzuki Swift 2021 - Hatchback blanco\n3️⃣ Mazda CX-50 2024 - SUV negro\n4️⃣ Toyota Corolla 2020 - Sedán azul/gris\n5️⃣ Chevrolet Corvette C8 2025 - Deportivo blanco\n\nCuéntame cuál te interesa y te doy más detalles 👀"
+    },
+    {
+      "keywords": ["precio", "precios", "costo", "cuánto cuesta", "cuanto cuesta", "valor"],
+      "respuesta": "💰 **Información de Precios**\n\nPara mayor información sobre precios y opciones de financiamiento, favor de rellenar el siguiente formulario:\n\n📋 https://forms.gle/T3HnT94zFjWAGRZ97\n\nO contáctanos directamente al 81 2609 7169 para una consulta personalizada. 📞"
+    },
+    {
+      "keywords": ["financiamiento", "crédito", "pago", "cuotas", "mensualidades", "plazos"],
+      "respuesta": "💳 **Opciones de Financiamiento**\n\nOfrecemos diferentes opciones de pago adaptadas a tu presupuesto.\n\nPara mayor información, favor de rellenar el siguiente formulario:\n\n📋 https://forms.gle/T3HnT94zFjWAGRZ97\n\nO llama al 81 2609 7169 para hablar con nuestro asesor. 📞"
+    }
+  ],
+  "default_response": "Gracias por tu pregunta. Para mayor información favor de rellenar el siguiente formulario:\n\n📋 https://forms.gle/T3HnT94zFjWAGRZ97\n\n¡O contáctanos al 81 2609 7169! 📞"
+}

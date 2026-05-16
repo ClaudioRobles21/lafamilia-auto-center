@@ -49,12 +49,12 @@
     },
     {
       "keywords": ["precio", "precios", "costo", "cuánto cuesta", "cuanto cuesta", "valor"],
-      "respuesta": "💰 **Información de Precios**\n\nPara mayor información sobre precios y opciones de financiamiento, favor de rellenar el siguiente formulario:\n\n📋 https://forms.gle/T3HnT94zFjWAGRZ97\n\nO contáctanos directamente al 81 2609 7169 para una consulta personalizada. 📞"
+      "respuesta": "💰 <strong>Información de Precios</strong><br><br>Para mayor información sobre precios y opciones de financiamiento, favor de rellenar el siguiente formulario:<br><br>📋 <a href=\"https://forms.gle/T3HnT94zFjWAGRZ97\" target=\"_blank\" style=\"color: #dc3545; font-weight: bold; text-decoration: none;\">Rellenar Formulario</a><br><br>O contáctanos directamente al <strong>81 2609 7169</strong> para una consulta personalizada. 📞"
     },
     {
       "keywords": ["financiamiento", "crédito", "pago", "cuotas", "mensualidades", "plazos"],
-      "respuesta": "💳 **Opciones de Financiamiento**\n\nOfrecemos diferentes opciones de pago adaptadas a tu presupuesto.\n\nPara mayor información, favor de rellenar el siguiente formulario:\n\n📋 https://forms.gle/T3HnT94zFjWAGRZ97\n\nO llama al 81 2609 7169 para hablar con nuestro asesor. 📞"
+      "respuesta": "💳 <strong>Opciones de Financiamiento</strong><br><br>Ofrecemos diferentes opciones de pago adaptadas a tu presupuesto.<br><br>Para mayor información, favor de rellenar el siguiente formulario:<br><br>📋 <a href=\"https://forms.gle/T3HnT94zFjWAGRZ97\" target=\"_blank\" style=\"color: #dc3545; font-weight: bold; text-decoration: none;\">Rellenar Formulario</a><br><br>O llama al <strong>81 2609 7169</strong> para hablar con nuestro asesor. 📞"
     }
   ],
-  "default_response": "Gracias por tu pregunta. Para mayor información favor de rellenar el siguiente formulario:\n\n📋 https://forms.gle/T3HnT94zFjWAGRZ97\n\n¡O contáctanos al 81 2609 7169! 📞"
+  "default_response": "Gracias por tu pregunta. Para mayor información favor de rellenar el siguiente formulario:<br><br>📋 <a href=\"https://forms.gle/T3HnT94zFjWAGRZ97\" target=\"_blank\" style=\"color: #dc3545; font-weight: bold; text-decoration: none;\">Rellenar Formulario</a><br><br>¡O contáctanos al <strong>81 2609 7169</strong>! 📞"
 }

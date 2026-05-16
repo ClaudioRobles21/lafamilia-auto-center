@@ -308,6 +308,18 @@
             border: 1px solid #eee;
         }
 
+        .message.bot a {
+            color: #dc3545;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            word-break: break-all;
+        }
+
+        .message.bot a:hover {
+            text-decoration: underline;
+        }
+
         .message.user {
             background: #dc3545;
             color: white;
@@ -942,6 +954,12 @@
             document.getElementById('chatbot').classList.add('hidden');
         }
 
+        function convertUrlsToLinks(text) {
+            // Convertir URLs en links clickeables
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, '<a href="$1" target="_blank" style="color: #dc3545; font-weight: bold; text-decoration: none;">Haz click aquí</a>');
+        }
+
         function addMessage(text, isBot, isSystem = false) {
             const messagesContainer = document.getElementById('chatMessages');
             const message = document.createElement('div');
@@ -952,7 +970,9 @@
                 message.className = `message ${isBot ? 'bot' : 'user'}`;
             }
             
-            message.textContent = text;
+            // Convertir URLs en links para mensajes del bot
+            const textWithLinks = isBot ? convertUrlsToLinks(text) : text;
+            message.innerHTML = textWithLinks;
             messagesContainer.appendChild(message);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }

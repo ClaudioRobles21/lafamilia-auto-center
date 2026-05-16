@@ -313,11 +313,13 @@
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
-            word-break: break-all;
+            word-break: break-word;
+            transition: 0.2s ease;
         }
 
         .message.bot a:hover {
             text-decoration: underline;
+            opacity: 0.85;
         }
 
         .message.user {
@@ -955,9 +957,18 @@
         }
 
         function convertUrlsToLinks(text) {
-            // Convertir URLs en links clickeables
+            // Detectar URLs
             const urlRegex = /(https?:\/\/[^\s]+)/g;
-            return text.replace(urlRegex, '<a href="$1" target="_blank" style="color: #dc3545; font-weight: bold; text-decoration: none;">Haz click aquí</a>');
+            
+            return text.replace(urlRegex, (url) => {
+                // Detectar Google Forms
+                if (url.includes('forms.gle') || url.includes('docs.google.com/forms')) {
+                    return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #dc3545; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 5px;">📋 Completar formulario</a>`;
+                }
+                
+                // Links normales
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #dc3545; font-weight: bold; text-decoration: none;">${url}</a>`;
+            });
         }
 
         function addMessage(text, isBot, isSystem = false) {

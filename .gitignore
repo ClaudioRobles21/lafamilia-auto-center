@@ -1,0 +1,32 @@
+# Archivo de configuración con API Key (NUNCA subir a Git)
+.env
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Entornos virtuales
+chatbot_env/
+venv/
+env/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Temporal
+*.tmp
+*.temp

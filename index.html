@@ -308,16 +308,6 @@
             border: 1px solid #eee;
         }
 
-        .message.bot a {
-            color: #dc3545;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .message.bot a:hover {
-            text-decoration: underline;
-        }
-
         .message.user {
             background: #dc3545;
             color: white;
@@ -962,7 +952,7 @@
                 message.className = `message ${isBot ? 'bot' : 'user'}`;
             }
             
-            message.innerHTML = text;
+            message.textContent = text;
             messagesContainer.appendChild(message);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
@@ -1131,7 +1121,7 @@
             
             setTimeout(() => {
                 if (!document.getElementById('chatbot').classList.contains('hidden')) {
-                    addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?<br><br>Puedo ayudarte con:<br>• Información sobre nuestros vehículos<br>• Horarios de atención<br>• Ubicación<br>• Financiamiento<br><br>¿Cuál es tu interés?", true);
+                    addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?\n\nPuedo ayudarte con:\n• Información sobre nuestros vehículos\n• Horarios de atención\n• Ubicación\n• Financiamiento\n\n¿Cuál es tu interés?", true);
                 }
             }, 500);
         });
@@ -1142,7 +1132,7 @@
                 setTimeout(() => {
                     const messagesContainer = document.getElementById('chatMessages');
                     if (messagesContainer.children.length === 0) {
-                        addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?<br><br>Puedo ayudarte con:<br>• Información sobre nuestros vehículos<br>• Horarios de atención<br>• Ubicación<br>• Financiamiento<br><br>¿Cuál es tu interés?", true);
+                        addMessage("¡Hola! 👋 Bienvenido a La Familia Auto Center. ¿En qué te puedo ayudar hoy?\n\nPuedo ayudarte con:\n• Información sobre nuestros vehículos\n• Horarios de atención\n• Ubicación\n• Financiamiento\n\n¿Cuál es tu interés?", true);
                     }
                 }, 300);
             }
